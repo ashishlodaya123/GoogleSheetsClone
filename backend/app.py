@@ -10,6 +10,11 @@ CORS(app)
 
 DATA_FILE = "spreadsheet_data.json"
 
+# Ensure the data file exists
+if not os.path.exists(DATA_FILE):
+    with open(DATA_FILE, 'w') as f:
+        json.dump([], f)  # Initialize with an empty list
+
 # Serve the frontend files
 @app.route('/')
 def index():
@@ -27,13 +32,13 @@ def calculate():
         data = request.json
         operation = data.get('operation')
         range_cells = data.get('range', [])
-        
+
         if not operation or not range_cells:
             return jsonify({'error': 'Invalid data'}), 400
-        
+
         result = spreadsheet.perform_operation(operation, range_cells)
         return jsonify({'result': result})
-    
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -49,11 +54,12 @@ def save_data():
 
 @app.route('/load', methods=['GET'])
 def load_data():
-    if os.path.exists(DATA_FILE):
+    try:
         with open(DATA_FILE, 'r') as f:
             data = json.load(f)
         return jsonify({'spreadsheet_data': data})
-    return jsonify({'spreadsheet_data': []})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
