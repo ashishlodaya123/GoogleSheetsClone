@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Sheets Clone</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+    <div id="toolbar">
+        <!-- Existing buttons -->
+        <button onclick="formatBold()" title="Bold Text"><i class="fas fa-bold"></i></button>
+        <button onclick="formatItalic()" title="Italicize Text"><i class="fas fa-italic"></i></button>
+        <button onclick="formatUnderline()" title="Underline Text"><i class="fas fa-underline"></i></button>
+        <button onclick="formatStrikethrough()" title="Strikethrough Text"><i class="fas fa-strikethrough"></i></button>
+
+        <select id="fontFamily" onchange="changeFontFamily()" title="Select Font Family">
+            <option value="Arial">Arial</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Courier New">Courier New</option>
+        </select>
+
+        <select id="fontSize" onchange="changeFontSize()" title="Select Font Size">
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+        </select>
+
+        <input type="color" id="fontColor" onchange="changeFontColor()" title="Select Font Color" />
+        <input type="color" id="cellColor" onchange="changeCellColor()" title="Select Cell Background Color" />
+
+        <button onclick="toggleDarkMode()" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        <button onclick="saveSpreadsheet()" title="Save Spreadsheet"><i class="fas fa-save"></i></button>
+        <button onclick="loadSpreadsheet()" title="Load Spreadsheet"><i class="fas fa-folder-open"></i></button>
+        <button onclick="clearSpreadsheet()" title="Clear Spreadsheet"><i class="fas fa-trash"></i></button>
+        <button onclick="mergeCells()" title="Merge Cells"><i class="fas fa-object-group"></i></button>
+        <button onclick="unmergeCells()" title="Unmerge Cells"><i class="fas fa-object-ungroup"></i></button>
+        <button onclick="undo()" title="Undo"><i class="fas fa-undo"></i></button>
+        <button onclick="redo()" title="Redo"><i class="fas fa-redo"></i></button>
+        <button onclick="exportCSV()" title="Export as CSV"><i class="fas fa-file-csv"></i></button>
+        <button onclick="importCSV()" title="Import CSV"><i class="fas fa-file-import"></i></button>
+
+        <!-- New buttons for unique functionalities -->
+        <button onclick="applyFormula()" title="Apply Formula"><i class="fas fa-calculator"></i></button>
+        <button onclick="predictTrend()" title="Predict Trend"><i class="fas fa-chart-line"></i></button>
+        <button onclick="analyzeText()" title="Analyze Text"><i class="fas fa-text-width"></i></button>
+        <button onclick="generateRandomNumbers()" title="Generate Random Numbers"><i class="fas fa-dice"></i></button>
+        <button onclick="insertEmoji()" title="Insert Emoji"><i class="fas fa-smile"></i></button>
+        <button onclick="addComment()" title="Add Comment"><i class="fas fa-comment"></i></button>
+        <button onclick="lockCells()" title="Lock Cells"><i class="fas fa-lock"></i></button>
+    </div>
+
+    <div id="formula-bar">
+        <label for="formulaBar">Formula/Value:</label>
+        <input type="text" id="formulaBar" title="Enter formula or value" placeholder="Enter formula or value" />
+    </div>
+
+    <div id="spreadsheet-container">
+        <table id="spreadsheet"></table>
+    </div>
+
+    <div id="loading-spinner" class="hidden">
+        <i class="fas fa-spinner fa-spin"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.dark-mode {
+  background: #222;
+  color: #ddd;
+}
+
+#toolbar {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+}
+
+.dark-mode #toolbar {
+  background: #444;
+  color: white;
+}
+
+#toolbar button,
+#toolbar select,
+#toolbar input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.dark-mode #toolbar button,
+.dark-mode #toolbar select,
+.dark-mode #toolbar input {
+  background: #666;
+  color: white;
+  border-color: #888;
+}
+
+#formula-bar {
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+}
+
+.dark-mode #formula-bar {
+  background: #444;
+  color: white;
+}
+
+#formula-bar input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.dark-mode #formula-bar input {
+  background: #666;
+  color: white;
+  border-color: #888;
+}
+
+#spreadsheet-container {
+  overflow: auto;
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #ccc;
+  padding: 5px;
+  min-width: 100px;
+  height: 30px;
+  text-align: center;
+}
+
+.dark-mode td,
+.dark-mode th {
+  border: 1px solid #666;
+}
+
+.selected {
+  background-color: #d3e3fd;
+}
+
+.dark-mode .selected {
+  background-color: #555;
+}
+
+#loading-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: #000;
+}
+
+.dark-mode #loading-spinner {
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Add these styles to your existing CSS */
+.merged-cell {
+  background-color: #e0e0e0;
+}
+
+.dark-mode .merged-cell {
+  background-color: #444;
+}
+
+#toolbar button,
+#toolbar select,
+#toolbar input {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.dark-mode #toolbar button,
+.dark-mode #toolbar select,
+.dark-mode #toolbar input {
+  background: #666;
+  color: white;
+  border-color: #888;
+}
+
+/* Add these styles to your existing CSS */
+.locked-cell {
+    background-color: #ffcccc;
+}
+
+.comment-cell::after {
+    content: '💬';
+    position: absolute;
+    font-size: 12px;
+    color: #007bff;
+}
